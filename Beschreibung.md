@@ -2,7 +2,7 @@
 
 | | | |
 |---|-|---|
-| **Version:**|&nbsp; &nbsp; &nbsp; | 1.0.7 |
+| **Version:**|&nbsp; &nbsp; &nbsp; | 1.0.8 |
 | **Stand:** | | 22.09.2026 |
 | **Author:** | | Mensch und Maschine Infrastruktur GmbH |
 | **Kontakt:** | | MapEdit@MuM.de |

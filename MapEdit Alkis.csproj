@@ -11,7 +11,7 @@
 	</PropertyGroup>
 	<PropertyGroup>
 		<BuildDate>$([System.DateTime]::UtcNow.ToString("yyyy-MM-dd"))</BuildDate>
-		<Version>1.0.7</Version>
+		<Version>1.0.8</Version>
 		<Product>MapEdit.Alkis</Product>
 		<Copyright>© 2026 Mensch und Maschine Infrastruktur GmbH</Copyright>
 	</PropertyGroup>

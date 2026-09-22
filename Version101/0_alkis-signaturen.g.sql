@@ -16,7 +16,7 @@
  ***************************************************************************/
 
 /***************************************************************************
- * Modified 2026 by Mensch und Maschine Infrastruktur GmbH for             *
+ * Modified 2026-09-21 by Mensch und Maschine Infrastruktur GmbH for       *
  * MapEdit Alkis Community Edition.                                       *
  ***************************************************************************/
 

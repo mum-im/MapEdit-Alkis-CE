@@ -1,6 +1,11 @@
+/***************************************************************************
+ * Modified 2026-09-21 by Mensch und Maschine Infrastruktur GmbH for       *
+ * MapEdit Alkis Community Edition.                                       *
+ ***************************************************************************/
+
 -- Version vom 06.10.2023 12:30
 -- gewählte Pakete: alle
--- gewählte Filter: 
+-- gewählte Filter:
 
 BEGIN;
 
