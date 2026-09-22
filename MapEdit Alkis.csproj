@@ -1,0 +1,251 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<StartupObject>MapEdit.Alkis.Program</StartupObject>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<RootNamespace>MapEdit.Alkis</RootNamespace>
+	</PropertyGroup>
+	<PropertyGroup>
+		<BuildDate>$([System.DateTime]::UtcNow.ToString("yyyy-MM-dd"))</BuildDate>
+		<Version>1.0.7</Version>
+		<Product>MapEdit.Alkis</Product>
+		<Copyright>© 2026 Mensch und Maschine Infrastruktur GmbH</Copyright>
+	</PropertyGroup>
+	<ItemGroup>
+		<AssemblyMetadata Include="BuildDate" Value="$(BuildDate)" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="EntryPoint.cs" />
+		<Compile Include="Program.cs" />
+		<Compile Include="Startup.cs" />
+		<Compile Include="Services\Structure\ImportEntity.cs" />
+		<Compile Include="Services\Structure\ImportEntityUtils.cs" />
+		<Compile Include="Services\Structure\ImportEntitySequenceValidator.cs" />
+		<Compile Include="Services\Structure\PortionGapException.cs" />
+		<Compile Include="Services\DatabaseManager.cs" />
+		<Compile Include="Services\DatabaseManagerPG.cs" />
+		<Compile Include="Services\DatabaseManagerPGPostRun.cs" />
+		<Compile Include="Services\DirectoryScanner.cs" />
+		<Compile Include="Services\ExecutionArgs.cs" />
+		<Compile Include="Services\ExitCodes.cs" />
+		<Compile Include="Services\ExitCodeException.cs" />
+		<Compile Include="Services\IDatabaseManager.cs" />
+		<Compile Include="Services\IPostRunExtension.cs" />
+		<Compile Include="Services\IDirectoryScanner.cs" />
+		<Compile Include="Services\IPostNasExecuter.cs" />
+		<Compile Include="Services\PostNasExecuter.cs" />
+		<Compile Include="Services\PostNasExecuterLinux.cs" />
+		<Compile Include="Services\PostNasExecuterWindows.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.6" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.6" />
+		<PackageReference Include="npgsql" Version="9.0.3" />
+		<PackageReference Include="Serilog.Extensions.Logging" Version="9.0.2" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Remove="Version101/alkis-functions.g.sql" />
+		<Content Remove="Version101/alkis-trigger.sql" />
+		<Content Remove="Version101/alkis-schema.g.sql" />
+		<Content Remove="Version101/alkis-schema.gfs" />
+		<Content Remove="Version101/alkis-compat.g.sql" />
+		<Content Remove="Version101/alkis-po-tables.g1.sql" />
+		<Content Remove="Version101/alkis-po-tables.g2.sql" />
+		<Content Remove="Version101/0_alkis-signaturen.g.sql" />
+		<Content Remove="Version101/alkis-punktsignaturen.sql" />
+		<Content Remove="Version101/postprocessing.d/0_ableitungsregeln.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/11001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/11002a.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/11002b.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/11002c.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/11002d.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/11003.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/12001.g.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/12002.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/12003.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/31001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/31002.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/41001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/41002.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/41003.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/41004.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/41005.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/41006.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/41007.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/41008.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/41009.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/42001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/42006.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/42009.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/42010.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/42015.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/42016.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/43001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/43002.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/43003.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/43004.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/43005.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/43006.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/43007.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/44001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/44005.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/44006.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/44007.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/51002.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/51003.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/51004.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/51005.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/51006.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/51007.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/51008.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/51009.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/51010.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/53001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/53002.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/53003.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/53004.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/53005.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/53007.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/53008.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/53009.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/54001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/55001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/55002.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/55006.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/57001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/57002.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/61001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/61003.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/61005.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/61006.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/61007.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/61008.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/61009.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/62040.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/71001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/71003.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/71006.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/71007.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/71008.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/71009.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/71011.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/72004.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/74005.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/91001.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/bw.sql" />
+		<Content Remove="Version101/postprocessing.d/1_ableitungsregeln/gebiete.sql" />
+		<Content Remove="Version101/postprocessing.d/2_ableitungsregeln.sql" />
+		<Content Remove="Version101/postprocessing.d/4_postnas-keytables.sql" />
+		<Content Remove="Version101/postprocessing.d/6_nohist.sql" />
+		<Content Remove="Version101/postprocessing.d/99_vacuum.sql" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Version101/alkis-functions.g.sql" />
+		<EmbeddedResource Include="Version101/alkis-trigger.sql" />
+		<EmbeddedResource Include="Version101/alkis-schema.g.sql" />
+		<EmbeddedResource Include="Version101/alkis-schema.gfs" />
+		<EmbeddedResource Include="Version101/alkis-compat.g.sql" />
+		<EmbeddedResource Include="Version101/alkis-po-tables.g1.sql" />
+		<EmbeddedResource Include="Version101/alkis-po-tables.g2.sql" />
+		<EmbeddedResource Include="Version101/0_alkis-signaturen.g.sql" />
+		<EmbeddedResource Include="Version101/alkis-punktsignaturen.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/0_ableitungsregeln.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/11001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/11002a.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/11002b.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/11002c.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/11002d.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/11003.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/12001.g.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/12002.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/12003.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/31001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/31002.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/41001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/41002.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/41003.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/41004.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/41005.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/41006.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/41007.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/41008.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/41009.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/42001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/42006.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/42009.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/42010.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/42015.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/42016.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/43001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/43002.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/43003.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/43004.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/43005.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/43006.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/43007.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/44001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/44005.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/44006.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/44007.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/51002.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/51003.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/51004.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/51005.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/51006.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/51007.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/51008.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/51009.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/51010.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/53001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/53002.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/53003.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/53004.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/53005.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/53007.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/53008.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/53009.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/54001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/55001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/55002.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/55006.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/57001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/57002.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/61001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/61003.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/61005.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/61006.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/61007.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/61008.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/61009.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/62040.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/71001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/71003.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/71006.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/71007.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/71008.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/71009.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/71011.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/72004.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/74005.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/91001.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/bw.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/1_ableitungsregeln/gebiete.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/2_ableitungsregeln.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/4_postnas-keytables.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/6_nohist.sql" />
+		<EmbeddedResource Include="Version101/postprocessing.d/99_vacuum.sql" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+</Project>
